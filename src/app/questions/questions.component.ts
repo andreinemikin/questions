@@ -27,7 +27,7 @@ export class QuestionsComponent implements OnInit {
 
   onSelect(currAnswer, answers) {
     answers.forEach((answer) => {
-      return answer.checked = currAnswer == answer.answer? true: false;
+      answer.checked = currAnswer === answer.answer;
     })
   }
 
