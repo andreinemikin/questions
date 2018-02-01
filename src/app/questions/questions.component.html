@@ -1,21 +1,21 @@
 <div class="container">
   <div *ngIf="questions.length">
-    <div>{{questions[cuurrentQuestion].question}}</div>
-    <div *ngFor="let answer of questions[cuurrentQuestion].answers; let i = index">
+    <div>{{questions[currentQuestionIndex].question}}</div>
+    <div *ngFor="let answer of questions[currentQuestionIndex].answers; let i = index">
       <div>
         <input type="radio"
                name="answer"
                [id]="i"
                [value]="answer.answer"
                [checked]="answer.checked"
-               (change)="onSelect(answer.answer, questions[cuurrentQuestion].answers)">
+               (change)="onSelect(answer.answer, questions[currentQuestionIndex].answers)">
         <label [for]="i"><span>{{answer.answer}}</span></label>
       </div>
     </div>
-    <button [disabled]="cuurrentQuestion === 0" class="btn btn-success" (click)="onPrev()">prev</button>
-    <button [hidden]="cuurrentQuestion === questions.length - 1" class="btn btn-success" (click)="onNext()">next
+    <button [disabled]="currentQuestionIndex === 0 || completed" class="btn btn-success" (click)="onPrev()">prev</button>
+    <button [hidden]="currentQuestionIndex === lastQuestion" class="btn btn-success" (click)="onNext()">next
     </button>
-    <button [hidden]="cuurrentQuestion !== questions.length - 1" class="btn btn-success" (click)="showScore()">done
+    <button [hidden]="currentQuestionIndex !== lastQuestion" class="btn btn-success" (click)="showScore()">done
     </button>
     <div class="alert alert-success" *ngIf="completed">Your result: {{total}}</div>
   </div>

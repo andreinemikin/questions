@@ -9,7 +9,8 @@ import {ConnectionService} from "../services/connection.service";
 })
 export class QuestionsComponent implements OnInit {
 
-  cuurrentQuestion = 0;
+  currentQuestionIndex = 0;
+  lastQuestion = 0;
   questions: Question[] = [];
   total: number;
   completed = false;
@@ -20,6 +21,7 @@ export class QuestionsComponent implements OnInit {
   ngOnInit() {
     this.connectionService.getQuestions().subscribe((questions: Question[]) => {
       this.questions = questions;
+      this.lastQuestion = this.questions.length - 1;
     });
   }
 
@@ -31,11 +33,11 @@ export class QuestionsComponent implements OnInit {
 
   onPrev() {
     this.completed = false;
-    this.cuurrentQuestion--;
+    this.currentQuestionIndex--;
   }
 
   onNext() {
-    this.cuurrentQuestion++;
+    this.currentQuestionIndex++;
   }
 
   showScore() {
