@@ -7,15 +7,14 @@
                name="answer"
                [id]="i"
                [value]="answer.answer"
-               [checked]="answer.checked"
-               (change)="onSelect(answer.answer, questions[currentQuestionIndex].answers)">
+               [(ngModel)]="answer.checked">
         <label [for]="i"><span>{{answer.answer}}</span></label>
       </div>
     </div>
     <button [disabled]="currentQuestionIndex === 0 || completed" class="btn btn-success" (click)="onPrev()">prev</button>
     <button [hidden]="currentQuestionIndex === lastQuestion" class="btn btn-success" (click)="onNext()">next
     </button>
-    <button [hidden]="currentQuestionIndex !== lastQuestion" class="btn btn-success" (click)="showScore()">done
+    <button [hidden]="currentQuestionIndex !== this.questions.length - 1" class="btn btn-success" (click)="showScore()">done
     </button>
     <div class="alert alert-success" *ngIf="completed">Your result: {{total}}</div>
   </div>

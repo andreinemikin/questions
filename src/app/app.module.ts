@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ConnectionService} from "./services/connection.service";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {ConnectionService} from "./services/connection.service";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [ConnectionService],

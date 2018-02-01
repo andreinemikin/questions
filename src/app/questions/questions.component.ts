@@ -25,12 +25,6 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  onSelect(currAnswer, answers) {
-    answers.forEach((answer) => {
-      answer.checked = currAnswer === answer.answer;
-    })
-  }
-
   onPrev() {
     this.currentQuestionIndex--;
   }
