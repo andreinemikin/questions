@@ -32,7 +32,6 @@ export class QuestionsComponent implements OnInit {
   }
 
   onPrev() {
-    this.completed = false;
     this.currentQuestionIndex--;
   }
 
