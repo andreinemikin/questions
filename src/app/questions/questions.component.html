@@ -1,0 +1,23 @@
+<div class="container">
+  <div *ngIf="questions.length">
+    <div>{{questions[cuurrentQuestion].question}}</div>
+    <div *ngFor="let answer of questions[cuurrentQuestion].answers; let i = index">
+      <div>
+        <input type="radio"
+               name="answer"
+               [id]="i"
+               [value]="answer.answer"
+               [checked]="answer.checked"
+               (change)="onSelect(answer.answer, questions[cuurrentQuestion].answers)">
+        <label [for]="i"><span>{{answer.answer}}</span></label>
+      </div>
+    </div>
+    <button [disabled]="cuurrentQuestion === 0" class="btn btn-success" (click)="onPrev()">prev</button>
+    <button [hidden]="cuurrentQuestion === questions.length - 1" class="btn btn-success" (click)="onNext()">next
+    </button>
+    <button [hidden]="cuurrentQuestion !== questions.length - 1" class="btn btn-success" (click)="showScore()">done
+    </button>
+    <div *ngIf="completed">Your result: {{total}}</div>
+  </div>
+</div>
+
