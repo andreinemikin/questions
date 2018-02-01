@@ -17,7 +17,7 @@
     </button>
     <button [hidden]="cuurrentQuestion !== questions.length - 1" class="btn btn-success" (click)="showScore()">done
     </button>
-    <div *ngIf="completed">Your result: {{total}}</div>
+    <div class="alert alert-success" *ngIf="completed">Your result: {{total}}</div>
   </div>
 </div>
 
